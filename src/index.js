@@ -1,12 +1,14 @@
 const Koa = require('koa');
 const bodyParser = require('koa-bodyparser');
 const convert = require('koa-convert');
+const cors = require('koa-cors');
 const controller = require('./middlewares/controller');
 const colors = require('./utils/colors');
 
 const app = new Koa();
 const port = 9623;
 
+app.use(convert(cors()));
 app.use(convert(bodyParser()));
 app.use(convert(controller()));
 
